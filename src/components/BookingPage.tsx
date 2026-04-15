@@ -6,9 +6,10 @@ import { motion } from 'motion/react';
 
 interface BookingPageProps {
   onBack: () => void;
+  theme: 'dark' | 'light';
 }
 
-export function BookingPage({ onBack }: BookingPageProps) {
+export function BookingPage({ onBack, theme }: BookingPageProps) {
   return (
     <motion.div
       initial={{ opacity: 0, x: 20 }}
@@ -16,9 +17,11 @@ export function BookingPage({ onBack }: BookingPageProps) {
       exit={{ opacity: 0, x: -20 }}
       className="relative min-h-screen pb-20"
     >
-      <Header onBack={onBack} />
-      <BookingSection />
-      <ServicesSection />
+      <Header onBack={onBack} theme={theme} />
+      <div className="px-5">
+        <BookingSection theme={theme} />
+        <ServicesSection theme={theme} />
+      </div>
       <FloatingWhatsApp />
     </motion.div>
   );
